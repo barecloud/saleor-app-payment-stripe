@@ -15,6 +15,7 @@ import { withSentryConfig } from "@sentry/nextjs";
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
+  output: "standalone",
   /** @param { import("webpack").Configuration } config */
   webpack(config) {
     config.experiments = { ...config.experiments, topLevelAwait: true };
@@ -22,8 +23,8 @@ const config = {
   },
 };
 
-const isSentryEnabled = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
-
+// const isSentryEnabled = process.env.SENTRY_DSN || process.env.NEXT_PUBLIC_SENTRY_DSN;
+const isSentryEnabled = false;
 const vanillaExtractConfig = withVanillaExtract(config);
 
 export default isSentryEnabled

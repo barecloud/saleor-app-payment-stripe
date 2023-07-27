@@ -12,7 +12,8 @@
   },
   "scripts": {
     "dev": "pnpm generate && next dev",
-    "build": "pnpm generate && next build",
+    "build": "next build",
+    "build:prod": "next build --no-lint",
     "start": "next start",
     "fetch-schema": "curl https://raw.githubusercontent.com/saleor/saleor/${npm_package_saleor_schemaVersion}/saleor/graphql/schema.graphql > graphql/schema.graphql",
     "generate": "pnpm generate:graphql && pnpm generate:schema",
@@ -25,7 +26,6 @@
     "test:rerecord": "POLLY_MODE=record vitest",
     "test:ci": "CI=true vitest --coverage --reporter=json --reporter=default && ./fix-coverage-report.js",
     "ts-node-esm": "node --loader ts-node/esm --experimental-specifier-resolution=node",
-    "prepare": "husky install",
     "github:release": "pnpm changeset tag && git push --follow-tags"
   },
   "saleor": {
@@ -34,7 +34,7 @@
   "dependencies": {
     "@hookform/resolvers": "3.1.1",
     "@radix-ui/react-alert-dialog": "1.0.4",
-    "@saleor/app-sdk": "0.41.1",
+    "@saleor/app-sdk": "0.43.0",
     "@saleor/macaw-ui": "0.8.0-pre.98",
     "@sentry/nextjs": "7.58.1",
     "@t3-oss/env-nextjs": "0.6.0",
@@ -121,7 +121,6 @@
     "eslint-plugin-require-form-method": "1.0.2",
     "eslint-plugin-testing-library": "5.11.0",
     "eslint-plugin-vitest": "0.2.6",
-    "husky": "8.0.3",
     "lint-staged": "13.2.3",
     "next-test-api-route-handler": "3.1.8",
     "prettier": "3.0.0",
@@ -135,7 +134,7 @@
     "node": ">=18.0.0 <19.0.0",
     "pnpm": ">=8.0.0 <9.0.0"
   },
-  "packageManager": "pnpm@8.6.0",
+  "packageManager": "pnpm@8.6.10",
   "pnpm": {
     "patchedDependencies": {
       "@types/testing-library__jest-dom@5.14.7": "patches/@types__testing-library__jest-dom@5.14.7.patch"
